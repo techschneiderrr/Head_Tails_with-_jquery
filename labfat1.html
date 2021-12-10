@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Heads or Tails?</h1>
+<div>
+ <img id="coin" src="./heads.jpeg" alt="penny" width="150px"/> <br />
+ <button id="flip">Flip!</button>
+</div>
+<p>
+ Heads Total: <span id="num_heads">0</span><br />
+ Tails Total: <span id="num_tails">0</span>
+</p>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#flip").click(function(){
+            var minNumber = 0;
+            var maxNumber = 10;
+            var randomNumber = randomNumberFromRange(minNumber, maxNumber);
+            function randomNumberFromRange(min,max)
+            {
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+            console.log(randomNumber);
+            var tail = 0;
+            var head = 0;
+            if(randomNumber % 2 == 0){
+                $("#num_heads").text(parseInt($("#num_heads").text()) + 1);
+                head++;
+                $("#coin").attr("src", "./heads.jpeg");
+
+            }
+            else{
+                $("#num_tails").text(parseInt($("#num_tails").text()) + 1);
+                tail++;
+                $("#coin").attr("src", "./tails.png");
+            }
+        });
+    });
+</script>
+</html>
